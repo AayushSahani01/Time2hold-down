@@ -19,7 +19,6 @@ io.on('connection', (socket) =>{
     socket.on("sendLocation", (data) =>  {
         io.emit("receiveLocation",{id:socket.id, ...data})
     })
-    console.log('connection');
     
 });
  
