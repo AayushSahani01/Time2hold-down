@@ -1,13 +1,13 @@
 const socket = io();
 
 if (navigator.geolocation) {
-  navigator.geolocation.watchPosition((position) => {
+  navigator.geolocation.getCurrentPosition((position) => {
     const { latitude, longitude } = position.coords;
     socket.emit(
       "sendLocation",
       { latitude, longitude },
-      () => {
-        console.log("Location shared");
+       () => {
+        locationStatus.textContent = 'Location shared';
 
       },
       (Error) => {
@@ -65,7 +65,7 @@ function checkNetwork() {
     const type = connection.effectiveType;
     networkStatus.textContent = `Network: ${type}`;
     // Adjust map detail based on network
-    if (type === '4g' || type === '3g') {
+    if (type === '5g' || type === '4g' || type === '3g') {
       canvas.style.imageRendering = 'auto';
     } else {
       canvas.style.imageRendering = 'pixelated'; // Lower quality for slow connections
@@ -75,7 +75,7 @@ function checkNetwork() {
   }
 }
 
- setInterval(checkNetwork, 3000);
+ setInterval(checkNetwork, 5000);
 
 const map = L.map('map').setView([0, 0], 10);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
