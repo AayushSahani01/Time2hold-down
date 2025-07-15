@@ -10,14 +10,14 @@
      crossorigin=""/>
 </head>
 <body>
-    <h2 style="text-align: center;">Time2Hold-down</h2>
-    <p style="text-align: end;">Connection: <span id="networkStatus">Checking...</span></p>
+    <h2 style="text-align: center; color: #545555;font-family: serif">Time2Hold-down</h2>
+    <p style="text-align: end; padding-right: 10px;">Connection: <span id="networkStatus" style="font-family: sans-serif; font-weight: bold;">Checking...</span></p>
     <div id="map">
         
     </div>
     
      <div id="info">
-    <p>Activity Status: <span id="location"></span>
+    <p style="font-weight: bold; font-family: serif; color: #545555; font-size: 20px">Activity Status: <span id="location"></span>
     <p>Break Status: <span id="breakStatus">No break scheduled</span></p>
     </p> <p>Destination: <span id="locationStatus">Waiting for location...</span></p>
     <button onclick="startTracking()">Start Tracking</button>
