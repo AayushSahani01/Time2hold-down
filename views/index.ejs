@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>real-time Tracker App</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -11,15 +11,19 @@
 </head>
 <body>
     <h2 style="text-align: center;">Time2Hold-down</h2>
+    <p style="text-align: end;">Connection: <span id="networkStatus">Checking...</span></p>
     <div id="map">
         
     </div>
     
      <div id="info">
-    <p>Current Location: <span id="location">Waiting for location...</span></p>
+    <p>Activity Status: <span id="location"></span>
     <p>Break Status: <span id="breakStatus">No break scheduled</span></p>
+    </p> <p>Destination: <span id="locationStatus">Waiting for location...</span></p>
     <button onclick="startTracking()">Start Tracking</button>
     <button onclick="scheduleBreak()">Schedule Break</button>
+    <button onclick="stopTracking()">Stop Tracking</button>
+
   </div>
     
      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
