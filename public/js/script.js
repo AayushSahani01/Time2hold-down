@@ -21,13 +21,13 @@ if (navigator.geolocation) {
 
 const map = L.map('map').setView([0, 0], 10);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 16,
     attribution: '&copy;Aayush_Sahani'
 }).addTo(map);
-var marker = L.marker([0, 0]).addTo(map);
  
-    
 
+
+ 
  function scheduleBreak() {
       if ('scheduling' in window) {
         navigator.scheduling.scheduleTask({
@@ -51,7 +51,16 @@ var marker = L.marker([0, 0]).addTo(map);
       }
     }
 
- 
- 
-marker.bindPopup("<b>Hi there!</b><br>I am here").openPopup();
+const markers = {}; 
+
+socket.on("receiveLocation", (data) => {
+  const {id,latitude ,longitude} = data;
+  map.setView([latitude, longitude], 10);
+  if(markers[id]){
+    markers[id].setLatLng([latitude, longitude]);
+  } 
+  else{
+    markers[id]= L.marker([latitude, longitude]).addTo(map)
+  }
+})
  

@@ -34,3 +34,6 @@ button{
   cursor: pointer;
   
 }
+button :hover{
+  background-color: #1f7074;
+}

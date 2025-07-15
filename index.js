@@ -15,12 +15,15 @@ const PORT = process.env.PORT;
 app.set('view engine', 'ejs');
 app.use (express.static(path.join(__dirname, 'public')));
 
-io.on('connection', (socket) => {
+io.on('connection', (socket) =>{
+    socket.on("sendLocation", (data) =>  {
+        io.emit("receiveLocation",{id:socket.id, ...data})
+    })
     console.log('connection');
     
 });
  
-app.use('/',function(req,res){
+app.use('/', function (req,res) {
     res.render("index.ejs");
 })
 
